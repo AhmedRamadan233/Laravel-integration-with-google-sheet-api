@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->job(new \App\Jobs\ProcessGoogleSheetsData)->everyFiveMinutes()->between('3:00', '23:00');
+
     }
 
     /**

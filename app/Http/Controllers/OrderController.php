@@ -12,16 +12,18 @@ class OrderController extends Controller
 {
     public function processGoogleSheetsData()
     {
-        ProcessGoogleSheetsData::dispatch();
+        $job = new ProcessGoogleSheetsData();
+        ProcessGoogleSheetsData::dispatch($job);
+        return response()->json(['message' => 'Worked now correct']);
     }
 
     public function index()
     {
         $spreadsheetId = '1-ftqLjH8-rB2gNRro7uEq8j0j42oGqMvyKOw0v5__bE';
         $spreadsheetProductId = '14jNcQTMwAlRcx_JJpNszqovWzuBwrjKWvw4eZeotzJw';
-        $ordersSheetName = 'orders!A2:f6'; 
+        $ordersSheetName = 'orders!A2:f6';
 
-        $productsSheetName = 'products!A2:D6'; 
+        $productsSheetName = 'products!A2:D6';
         $orders = Sheets::spreadsheet($spreadsheetId)
             ->sheet($ordersSheetName)
             ->get();
@@ -29,10 +31,7 @@ class OrderController extends Controller
         $products = Sheets::spreadsheet($spreadsheetProductId)
             ->sheet($productsSheetName)
             ->get();
-
-
-
-        return response()->json(['orders' => $orders ,'products' => $products ]);
+        return response()->json(['orders' => $orders, 'products' => $products]);
     }
 
 
@@ -68,7 +67,7 @@ class OrderController extends Controller
     //             'final_price' => $order[2],
     //             'quantity' => $order[3], 
     //             'product_id' => $order[4], 
-                
+
     //         ]);
     //     }
 
