@@ -1,0 +1,12 @@
+
+{
+    "web": {
+        "client_id": "277562078012-82emt50tka8dofs2hkhapegrslv8td2l.apps.googleusercontent.com",
+        "project_id": "romio-425203",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "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",
+        "redirect_uris": ["https://localhost:8000/login/google/callback"]
+    }
+}
