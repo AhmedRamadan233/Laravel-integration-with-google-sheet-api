@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+    Route::get('/', function () {
+        return view('admin-dashboard.home.index');
+    })->name('dashboard');
+    
+Route::prefix('products')->group(function(){
+    Route::get('/', [ProductController::class, 'index'])->name('products.index');
+  
 });
-Route::get('/orders', [OrderController::class, 'index']);
+
