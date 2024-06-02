@@ -15,6 +15,8 @@ return [
     'service'          => [
         'enable' => true,
         'file'   => env('GOOGLE_SERVICE_ACCOUNT_JSON', storage_path('google/romio-425203-65f3bf347bf7')),
+        // 'file' => storage_path('app/google_credentials/romio-425203-65f3bf347bf7.json'), // Update this path
+
     ],
     'config'           => [],
     // 'post_spreadsheet_id' and 'post_sheet_id' are not standard keys and should be added only if used in your application.

@@ -1,39 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Jobs;
 
 use App\Models\Order;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Revolution\Google\Sheets\Facades\Sheets;
 
-class OrderController extends Controller
+class ProcessGoogleSheetsData implements ShouldQueue
 {
-
-    public function index()
-    {
-        $spreadsheetId = '1-ftqLjH8-rB2gNRro7uEq8j0j42oGqMvyKOw0v5__bE';
-        $spreadsheetProductId = '14jNcQTMwAlRcx_JJpNszqovWzuBwrjKWvw4eZeotzJw';
-        $ordersSheetName = 'orders!A2:f6'; 
-
-        $productsSheetName = 'products!A2:D6'; 
-        $orders = Sheets::spreadsheet($spreadsheetId)
-            ->sheet($ordersSheetName)
-            ->get();
-
-        $products = Sheets::spreadsheet($spreadsheetProductId)
-            ->sheet($productsSheetName)
-            ->get();
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
 
 
-        return response()->json(['orders' => $orders ,'products' => $products ]);
-    }
-
-
-
-
-    public function processGoogleSheetsData()
+    /**
+     * Execute the job.
+     */
+    public function handle()
     {
         $spreadsheetProductId = '14jNcQTMwAlRcx_JJpNszqovWzuBwrjKWvw4eZeotzJw';
         $productsSheetName = 'products!A2:D6';
@@ -70,3 +57,4 @@ class OrderController extends Controller
         return response()->json(['message' => 'Google Sheets data processed successfully']);
     }
 }
+
