@@ -14,4 +14,10 @@ class Product extends Model
         'country', 
         'product_code', 
     ];
+    
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

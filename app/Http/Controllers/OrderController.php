@@ -10,6 +10,11 @@ use Revolution\Google\Sheets\Facades\Sheets;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        return view('livewire.orders.index');
+
+    }
     public function processGoogleSheetsData()
     {
         $job = new ProcessGoogleSheetsData();
@@ -17,7 +22,7 @@ class OrderController extends Controller
         return response()->json(['message' => 'Worked now correct']);
     }
 
-    public function index()
+    public function indexOfProcess()
     {
         $spreadsheetId = '1-ftqLjH8-rB2gNRro7uEq8j0j42oGqMvyKOw0v5__bE';
         $spreadsheetProductId = '14jNcQTMwAlRcx_JJpNszqovWzuBwrjKWvw4eZeotzJw';

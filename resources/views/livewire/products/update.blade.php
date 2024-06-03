@@ -1,5 +1,5 @@
 <form>
-    <input type="hidden" wire:model="category_id">
+    <input type="hidden" wire:model="product_id">
     <div class="form-group mb-3">
         <label for="product_name">product_name:</label>
         <input type="text" class="form-control @error('product_name') is-invalid @enderror" id="product_name" placeholder="Enter product_name" wire:model="product_name">

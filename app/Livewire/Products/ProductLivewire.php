@@ -10,6 +10,8 @@ class ProductLivewire extends Component
 
     public $products, $product_name, $country, $product_code,  $description, $product_id;
     public $updateProduct = false;
+
+    public $confirmingDelete = null;
     protected $listeners = [
         'deleteProduct' => 'destroy'
     ];
@@ -91,13 +93,21 @@ class ProductLivewire extends Component
             $this->cancel();
         }
     }
-    public function destroy($id)
+    public function confirmDelete($id)
     {
-        try {
-            Product::find($id)->delete();
-            session()->flash('success', "Product Deleted Successfully!!");
-        } catch (\Exception $e) {
-            session()->flash('error', "Something goes wrong while deleting Product!!");
+        $this->confirmingDelete = $id;
+    }
+    public function destroy()
+    {
+        if ($this->confirmingDelete) {
+            try {
+                Product::find($this->confirmingDelete)->delete();
+                session()->flash('success', "Order Deleted Successfully!!");
+                $this->confirmingDelete = null;
+            } catch (\Exception $e) {
+                session()->flash('error', "Something goes wrong while deleting Order!!");
+                $this->confirmingDelete = null;
+            }
         }
     }
 }

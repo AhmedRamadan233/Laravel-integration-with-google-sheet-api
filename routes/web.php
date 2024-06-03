@@ -23,3 +23,7 @@ Route::prefix('products')->group(function(){
   
 });
 
+Route::prefix('orders')->group(function(){
+    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
+  
+});
