@@ -1,66 +1,187 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Integration With Google Sheets API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Setting Up Google Cloud
 
-## About Laravel
+### Step 1: Google Cloud Console
+Visit the Google Cloud Console to start setting up your project.
+<a href="https://console.cloud.google.com">Click</a>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+!open this 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Create a new project in the Google Cloud Console.
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20134011.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Step 2: Create a New Project
 
-## Learning Laravel
+!Create New Project
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20134152.png)
+### Step 3: Go to Library
+Navigate to the library section of your Google Cloud project.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+!Go to Library
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20134244.png)
 
-## Laravel Sponsors
+### Step 4: Enable APIs
+Search for the required APIs and enable them for your project.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+!Choose this one
 
-### Premium Partners
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20134335.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+!Enable APIs
 
-## Contributing
+![Screenshot 2024-06-03 152622](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20152622.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+------
 
-## Code of Conduct
+## Configuring Credentials
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Step 1: Access Credentials
+Go to the 'Credentials' section after enabling the necessary APIs.
 
-## Security Vulnerabilities
+!Credentials Section
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20134523.png)
 
-## License
+### Step 2: API Key
+Ensure your API key is enabled for editing.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20134725.png)
+
+!API Key Editing
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20151423.png)
+
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20151453.png)
+
+### Step 3: WebClient
+Enable the WebClient and download the JSON file.
+
+!WebClient JSON
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20152043.png)
+
+------------------------------------------
+
+## Google Sheets Setup
+
+### Step 1: Access Google Sheets
+Go to your Google Sheet and ensure it is set to 'Share and Edit'.
+
+!Google Sheets Share and Edit
+
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20134838.png)
+
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20134933.png)
+
+### Step 2: Sheet Name
+Note that the name you see is the name of the paper, not the sheet.
+
+!Paper Name
+
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20135109.png)
+
+-------------------------
+
+## Visual Studio Code Setup
+
+### Step 1: JSON File
+Place the downloaded JSON file into the storage directory of your Laravel project.
+
+!JSON File in Storage 
+
+### Step 2: Environment Variables
+Set the following environment variables in your `.env` file:
+
+```plaintext
+GOOGLE_API_KEY=your-google-api-key
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_SERVICE_ACCOUNT_EMAIL=your-service-account-email
+GOOGLE_SERVICE_ACCOUNT_JSON=your-json-file-name
+GOOGLE_REDIRECT_URL=your-redirect-url
+```
+### Step 3: Composer Commands
+Run the following commands to install the necessary package and publish the configuration:
+
+```sh
+composer require revolution/laravel-google-sheets
+```
+```sh
+php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider" --tag="config"
+```
+
+### Step 4: Configuration File
+Create a google.php file in the config folder with the following content:
+
+```php
+<?php
+
+return [
+    'application_name' => env('GOOGLE_APPLICATION_NAME', 'My Laravel Application'),
+    'client_id'        => env('GOOGLE_CLIENT_ID'),
+    'client_secret'    => env('GOOGLE_CLIENT_SECRET'),
+    'redirect_uri'     => env('GOOGLE_REDIRECT_URL'),
+    'scopes'           => [
+        \Google\Service\Sheets::DRIVE,
+        \Google\Service\Sheets::SPREADSHEETS,
+    ],
+    'access_type'      => 'offline',
+    'approval_prompt'  => 'force',
+    'developer_key'    => env('GOOGLE_API_KEY'),
+    'service'          => [
+        'enable' => true,
+        'file'   => env('GOOGLE_SERVICE_ACCOUNT_JSON', storage_path('app/google-service-account.json')),
+    ],
+    'config'           => [],
+];
+```
+
+### Step 5: Clear Configuration Cache
+Remember to clear the configuration cache after making changes:
+
+```sh
+php artisan config:clear
+```
+```sh
+php artisan config:cache
+```
+```sh
+php artisan cache:clear
+```
+--------------
+
+## Generate Process Google Sheets Data Controller
+
+### Step 1: Retrieve Data
+Get the $spreadsheetId from the URL of the sheet.
+
+!Spread sheet Id
+
+![](file:///C:/Users/w/Desktop/google%20sheet/Screenshot%202024-06-03%20154512.png)
+
+**Define the `$ordersSheetName` as `orders!A2:F6`, which is the name of the sheet paper and its range.**
+
+
+```php
+use Revolution\Google\Sheets\Facades\Sheets;
+
+public function index()
+{
+    $spreadsheetId = '1-ftqLjH8-rB2gNRro7uEq8j0j42oGqMvyKOw0v5__bE';
+    $spreadsheetProductId = '14jNcQTMwAlRcx_JJpNszqovWzuBwrjKWvw4eZeotzJw';
+    $ordersSheetName = 'orders!A2:f6';
+
+    $productsSheetName = 'products!A2:D6';
+    $orders = Sheets::spreadsheet($spreadsheetId)
+        ->sheet($ordersSheetName)
+        ->get();
+
+    $products = Sheets::spreadsheet($spreadsheetProductId)
+        ->sheet($productsSheetName)
+        ->get();
+
+    return response()->json(['orders' => $orders, 'products' => $products]);
+}
+```
+
