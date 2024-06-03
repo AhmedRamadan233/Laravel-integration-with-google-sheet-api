@@ -7,7 +7,21 @@
                 <input type="text" wire:model.defer="search" placeholder="Search orders..." class="form-control mb-3" />
                 <button wire:click="searchOrders" class="btn btn-primary">Search</button>
             </div> --}}
-            
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="form-group m-2">
+                        {{-- <label for="name" class="sr-only">Search by client name phone number</label> --}}
+                        <div class="input-group">
+                            <input type="text" wire:model.defer="search" placeholder="Search orders..."
+                                class="form-control " />
+                            <div class="input-group-append">
+                                <button wire:click="searchOrders" class="btn btn-primary"><i
+                                        class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
@@ -35,7 +49,8 @@
                                         <td>
                                             <button wire:click="edit({{ $order->id }})"
                                                 class="btn btn-primary btn-sm">Edit</button>
-                                            <button wire:click="confirmDelete({{ $order->id }})" class="btn btn-danger btn-sm">Delete</button>
+                                            <button wire:click="confirmDelete({{ $order->id }})"
+                                                class="btn btn-danger btn-sm">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -51,14 +66,19 @@
                 </div>
             </div>
             <div class="card-footer">
-                @if($confirmingDelete == $order->id)
-                <div>
-                    Are you sure you want to delete this order?
-                    <button wire:click="destroy" class="btn btn-danger btn-sm">Yes, Delete</button>
-                    <button wire:click="$set('confirmingDelete', null)" class="btn btn-secondary btn-sm">Cancel</button>
-                </div>
-            @endif
+                @foreach ($orders as $order)
+                    @if ($confirmingDelete == $order->id)
+                        <div>
+                            Are you sure you want to delete this order {{ $order->client_name }}?
+                            <button wire:click="destroy({{ $order->id }})" class="btn btn-danger btn-sm">Yes,
+                                Delete</button>
+                            <button wire:click="$set('confirmingDelete', null)"
+                                class="btn btn-secondary btn-sm">Cancel</button>
+                        </div>
+                    @endif
+                @endforeach
             </div>
+
         </div>
     </div>
     <!-- Column 4 Left -->
@@ -80,7 +100,7 @@
                 @else
                     @include('livewire.orders.create')
                 @endif
-                
+
             </div>
         </div>
     </div>

@@ -123,16 +123,12 @@ class OrderLivewire extends Component
     {
         $this->confirmingDelete = $id;
     }
-//     public function searchOrders()
-// {
-//     // $this->orders = Order::where('client_name', 'like', '%' . $this->search . '%')
-//     //     ->orWhere('phone_number', 'like', '%' . $this->search . '%')
-//     //     ->get();
-
-//     // if ($this->orders->isEmpty()) {
-//     //     session()->flash('error', "No orders found matching the search criteria.");
-//     // }
-// }
+    public function searchOrders()
+    {
+        $this->orders = Order::where('client_name', 'like', '%' . $this->search . '%')
+            ->orWhere('phone_number', 'like', '%' . $this->search . '%')
+            ->get();
+    }
 
     public function destroy()
     {
