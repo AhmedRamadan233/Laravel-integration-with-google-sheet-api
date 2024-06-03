@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
+// use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderLivewire extends Component
 {
@@ -21,11 +22,11 @@ class OrderLivewire extends Component
     ];
     // Validation Rules
     protected $rules = [
-        'client_name' => 'required',
-        'phone_number' => 'required',
-        'product_id' => 'required',
-        'final_price' => 'required',
-        'quantity' => 'required',
+        'client_name' => 'required|string|max:255',
+        'phone_number' => 'required|regex:/^\d+$/|max:20',
+        'product_id' => 'required|integer|exists:products,id',
+        'final_price' => 'required|numeric|min:0',
+        'quantity' => 'required|integer|min:1',
     ];
     public function updatingSearch()
     {
@@ -70,6 +71,7 @@ class OrderLivewire extends Component
                 'final_price' => $this->final_price,
                 'quantity' => $this->quantity,
             ]);
+            // Alert::success('Success Title', 'Success Message');
 
             // Set Flash Message
             session()->flash('success', 'Order Created Successfully!!');

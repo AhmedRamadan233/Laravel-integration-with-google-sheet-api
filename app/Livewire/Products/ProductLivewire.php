@@ -17,10 +17,10 @@ class ProductLivewire extends Component
     ];
     // Validation Rules
     protected $rules = [
-        'product_name' => 'required',
-        'description' => 'required',
-        'country' => 'required',
-        'product_code' => 'required',
+        'product_name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'country' => 'required|string|max:255',
+        'product_code' => 'required|string|max:50|unique:products,product_code',
     ];
     public function render()
     {
