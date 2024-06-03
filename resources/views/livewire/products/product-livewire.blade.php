@@ -3,24 +3,7 @@
     <!-- Column 8 Right -->
     <div class="col-md-8">
         <div class="card">
-            {{-- <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <form action="{{ route('products.index') }}" method="get" class="form-inline">
-                        <div class="form-group mx-2">
-                            <label for="name" class="sr-only">Search by Name</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="name" placeholder="Search by name..." name="name" value="{{ request('name') }}">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-search"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary mx-2">Search</button>
-                    </form>
-                </div>
-            </div> --}}
+           
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
@@ -53,7 +36,9 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="3" align="center">No Products Found.</td>
+                                    <td colspan="7" align="center">
+                                        No Products Found.
+                                    </td>
                                 </tr>
                             @endif
                         </tbody>
@@ -61,14 +46,19 @@
                 </div>
             </div>
             <div class="card-footer">
-                @if($confirmingDelete == $product->id)
-                <div>
-                    Are you sure you want to delete this product?
-                    <button wire:click="destroy" class="btn btn-danger btn-sm">Yes, Delete</button>
-                    <button wire:click="$set('confirmingDelete', null)" class="btn btn-secondary btn-sm">Cancel</button>
-                </div>
-            @endif
+                @foreach ($products as $product)
+                    @if ($confirmingDelete == $product->id)
+                        <div>
+                            Are you sure you want to delete this order {{ $product->product_name }}?
+                            <button wire:click="destroy({{ $product->id }})" class="btn btn-danger btn-sm">Yes,
+                                Delete</button>
+                            <button wire:click="$set('confirmingDelete', null)"
+                                class="btn btn-secondary btn-sm">Cancel</button>
+                        </div>
+                    @endif
+                @endforeach
             </div>
+           
         </div>
     </div>
     <!-- Column 4 Left -->
